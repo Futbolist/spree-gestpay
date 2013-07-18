@@ -1,4 +1,4 @@
-class BillingIntegration::Gestpay < BillingIntegration
+class BillingIntegration::Gestpay < Spree::BillingIntegration
 	preference :login, :string
 	preference :password, :string
 
