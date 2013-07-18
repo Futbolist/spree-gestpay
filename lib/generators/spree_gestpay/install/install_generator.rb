@@ -8,7 +8,7 @@ module SpreeGestpay
       end
 
       def add_stylesheets
-        inject_into_file "app/assets/stylesheets/store/all.css", " *= require store/spree_gestpay\n", :before => /\*\//, :verbose => true
+        #inject_into_file "app/assets/stylesheets/store/all.css", " *= require store/spree_gestpay\n", :before => /\*\//, :verbose => true
         #inject_into_file "app/assets/stylesheets/admin/all.css", " *= require admin/spree_gestpay\n", :before => /\*\//, :verbose => true     
       end
 
