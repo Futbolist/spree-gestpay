@@ -1,6 +1,6 @@
 # encoding: utf-8
 module Spree
-  class GestpayController < Spree::BaseController
+  class GestpayController < StoreController
     skip_before_filter :verify_authenticity_token, :only => [:comeback, :comeback_s2s]
   
     def show
