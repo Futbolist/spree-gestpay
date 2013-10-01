@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_gestpay'
-  s.version     = '1.3.0'
+  s.version     = '1.3.1'
   s.summary     = 'Add gem summary here'
   s.description = 'Spree commerce extension for Gestpay by Banca Sella payment'
   s.required_ruby_version = '>= 1.9.2'
