@@ -48,14 +48,14 @@ module Spree
       @order = Order.find_by_number(t[:shop_transaction_id]) if t[:shop_transaction_id]
       logger.info "***GESTPAY***comeback*** Data in comeback: #{params} #{t} #{@order}"
       if t[:shop_transaction_id] and @order
-        @order.payment.started_processing
+        @order.payments.first.started_processing
         case t[:transaction_result]
         when "XX" # Esito transazione sospeso (pagamento tramite bonifico)
           flash[:error] = "Esito transazione sospeso, bonifico. #{t[:transaction_result]}"
           # TODO : andrebbe in realtà accettato come pagamento ma senza conferma dell'avvenuta transazione ?
           redirect_to checkout_state_url(:payment)
         when "OK" # Esito transazione positivo
-          @order.payment.complete
+          @order.payments.first.complete
           @order.next
           @order.save
           session[:order_id] = nil
@@ -90,11 +90,11 @@ module Spree
         logger.info "***GESTPAY***S2S*** comeback_s2s: #{@order.payment.inspect}"
         case t[:transaction_result]
           when "XX" # Esito transazione sospeso (pagamento tramite bonifico)
-            @order.payment.pend
+            @order.payments.first.pend
           when "OK" # Esito transazione positivo
-            @order.payment.complete
+            @order.payments.first.complete
           when "KO" # Esito transazione negativo
-            @order.payment.fail
+            @order.payments.first.fail
           else # Esito transazione indefinito
             logger.info "***GESTPAY***S2S*** Esito transazione indefinito - comeback_s2s: #{params} #{t} #{@order}"
         end      
