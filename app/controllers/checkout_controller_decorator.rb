@@ -13,7 +13,7 @@ module Spree
       return unless payment_method.kind_of?(Spree::BillingIntegration::Gestpay) || payment_method.kind_of?(Spree::BillingIntegration::Gestpay)
       
       update_params = object_params.dup
-      update_params.delete(:payments_attributes)
+      #update_params.delete(:payments_attributes)
       if @order.update_attributes(update_params)
         fire_event('spree.checkout.update')
         render :edit and return unless apply_coupon_code
