@@ -48,7 +48,7 @@ module Spree
       @order = Order.find_by_number(t[:shop_transaction_id]) if t[:shop_transaction_id]
       logger.info "***GESTPAY***comeback*** Data in comeback: #{params} #{t} #{@order}"
       if t[:shop_transaction_id] and @order
-        @order.payments.valid.first.started_processing!
+        #@order.payments.valid.first.started_processing!
         case t[:transaction_result]
         when "XX" # Esito transazione sospeso (pagamento tramite bonifico)
           flash[:error] = "Esito transazione sospeso, bonifico. #{t[:transaction_result]}"
